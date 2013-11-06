@@ -1,0 +1,363 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>CSS札记 by Hussion</title>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="javascripts/main.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+  </head>
+  <body>
+
+      <header>
+        <h1>CSS札记</h1>
+        <p></p>
+      </header>
+
+      <div id="banner">
+        <span id="logo"></span>
+
+        <a href="https://github.com/Hussion/css" class="button fork"><strong>View On GitHub</strong></a>
+        <div class="downloads">
+          <span>Downloads:</span>
+          <ul>
+            <li><a href="https://github.com/Hussion/css/zipball/master" class="button">ZIP</a></li>
+            <li><a href="https://github.com/Hussion/css/tarball/master" class="button">TAR</a></li>
+          </ul>
+        </div>
+      </div><!-- end banner -->
+
+    <div class="wrapper">
+      <nav>
+        <ul></ul>
+      </nav>
+      <section>
+        <h3>
+<a name="ie6%E5%92%8C%E7%8E%B0%E4%BB%A3%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84bug" class="anchor" href="#ie6%E5%92%8C%E7%8E%B0%E4%BB%A3%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84bug"><span class="octicon octicon-link"></span></a>ie6和现代浏览器的bug</h3>
+
+<h5>
+<a name="ie6-css-bug-%E5%92%8C%E8%A7%A6%E5%8F%91%E6%9D%A1%E4%BB%B6" class="anchor" href="#ie6-css-bug-%E5%92%8C%E8%A7%A6%E5%8F%91%E6%9D%A1%E4%BB%B6"><span class="octicon octicon-link"></span></a>IE6 css bug 和触发条件</h5>  
+
+<h5>
+<a name="ie6%E4%B8%8B%E6%B5%AE%E5%8A%A8%E5%85%83%E7%B4%A0%E5%B7%A6margin%E5%8F%8C%E8%BE%B9%E8%B7%9D-%E8%A7%A6%E5%8F%91%E6%9D%A1%E4%BB%B6blockfloatmargin-left%E7%B4%A7%E6%8C%A8%E7%9D%80%E7%88%B6%E7%BA%A7" class="anchor" href="#ie6%E4%B8%8B%E6%B5%AE%E5%8A%A8%E5%85%83%E7%B4%A0%E5%B7%A6margin%E5%8F%8C%E8%BE%B9%E8%B7%9D-%E8%A7%A6%E5%8F%91%E6%9D%A1%E4%BB%B6blockfloatmargin-left%E7%B4%A7%E6%8C%A8%E7%9D%80%E7%88%B6%E7%BA%A7"><span class="octicon octicon-link"></span></a>ie6下浮动元素，左margin双边距 触发条件(block+float+margin-left+紧挨着父级)</h5>
+
+<p>连续的浮动元素，当设置了左浮动的时候，第一个元素的左margin-left出现双倍间距<br><strong>例：</strong>  </p>
+
+<blockquote>
+<p>.test {float: left; margin-left: 10px}  </p>
+</blockquote>
+
+<p><strong>解决办法：</strong><br>
+加入display:inline解决问题  </p>
+
+<h5>
+<a name="ie6%E4%B8%8B%E6%B5%AE%E5%8A%A8%E5%85%83%E7%B4%A0%E5%92%8C%E9%9D%9E%E6%B5%AE%E5%8A%A8%E5%AE%9A%E5%AE%BD%E5%85%83%E7%B4%A0%E4%B9%8B%E9%97%B4-3px-bug-%E8%A7%A6%E5%8F%91%E6%9D%A1%E4%BB%B6blockfloat%E9%9D%9E%E6%B5%AE%E5%8A%A8%E5%85%83%E7%B4%A0%E5%AE%9A%E5%AE%BD" class="anchor" href="#ie6%E4%B8%8B%E6%B5%AE%E5%8A%A8%E5%85%83%E7%B4%A0%E5%92%8C%E9%9D%9E%E6%B5%AE%E5%8A%A8%E5%AE%9A%E5%AE%BD%E5%85%83%E7%B4%A0%E4%B9%8B%E9%97%B4-3px-bug-%E8%A7%A6%E5%8F%91%E6%9D%A1%E4%BB%B6blockfloat%E9%9D%9E%E6%B5%AE%E5%8A%A8%E5%85%83%E7%B4%A0%E5%AE%9A%E5%AE%BD"><span class="octicon octicon-link"></span></a>ie6下浮动元素和非浮动定宽元素之间 3px bug 触发条件(block+float+非浮动元素定宽)</h5>
+
+<p>浮动元素，假如右边元素是定宽在ie6中出现两者之间有3px的bug,而且还会让相邻的定宽的元素浮动<br><strong>例：</strong>  </p>
+
+<blockquote>
+<p>.test1 {float: left;}<br>
+  .test2 {width: 300px;}</p>
+</blockquote>
+
+<p><strong>解决办法：</strong><br>
+在浮动元素加上ie6 css hack _margin-right: -3px;或者在非浮动元素加上float: left解决问题 </p>
+
+<h5>
+<a name="ie6%E4%B8%8B%E5%AE%9A%E5%AE%BD%E5%9F%BA%E6%95%B0bug-%E8%A7%A6%E5%8F%91%E6%9D%A1%E4%BB%B6%E5%AE%BD%E5%9F%BA%E6%95%B0%E7%9B%B8%E5%AF%B9%E5%AE%9A%E4%BD%8D%E5%A4%96%E5%85%83%E7%B4%A0%E7%BB%9D%E5%AF%B9%E5%AE%9A%E4%BD%8D--right%E5%86%85%E5%85%83%E7%B4%A0" class="anchor" href="#ie6%E4%B8%8B%E5%AE%9A%E5%AE%BD%E5%9F%BA%E6%95%B0bug-%E8%A7%A6%E5%8F%91%E6%9D%A1%E4%BB%B6%E5%AE%BD%E5%9F%BA%E6%95%B0%E7%9B%B8%E5%AF%B9%E5%AE%9A%E4%BD%8D%E5%A4%96%E5%85%83%E7%B4%A0%E7%BB%9D%E5%AF%B9%E5%AE%9A%E4%BD%8D--right%E5%86%85%E5%85%83%E7%B4%A0"><span class="octicon octicon-link"></span></a>ie6下定宽基数bug 触发条件(宽基数+相对定位(外元素)+绝对定位 + right(内元素))</h5>
+
+<p>两个嵌套元素，外元素的宽度为基数并且是相对定位的，内元素是绝对定位切设置了right,在ie6下出现了right: 1px的间距bug 
+<strong>例：</strong>  </p>
+
+<blockquote>
+<p>.test1 {position: relative; width: 399px;} <em>外元素</em><br>
+  .test2 {position: absolute; right: 0} <em>内元素</em></p>
+</blockquote>
+
+<p><strong>解决办法：</strong><br>
+将外层元素的宽设置为偶数  </p>
+
+<h5>
+<a name="%E7%88%B6%E5%AE%B9%E5%99%A8%E9%80%82%E5%BA%94%E6%B5%AE%E5%8A%A8%E5%AD%90%E5%AE%B9%E5%99%A8%E7%9A%84%E9%AB%98-%E8%A7%A6%E5%8F%91%E6%9D%A1%E4%BB%B6%E4%B8%8D%E5%AE%9A%E9%AB%98%E7%88%B6%E5%85%83%E7%B4%A0float%E5%AD%90%E5%85%83%E7%B4%A0" class="anchor" href="#%E7%88%B6%E5%AE%B9%E5%99%A8%E9%80%82%E5%BA%94%E6%B5%AE%E5%8A%A8%E5%AD%90%E5%AE%B9%E5%99%A8%E7%9A%84%E9%AB%98-%E8%A7%A6%E5%8F%91%E6%9D%A1%E4%BB%B6%E4%B8%8D%E5%AE%9A%E9%AB%98%E7%88%B6%E5%85%83%E7%B4%A0float%E5%AD%90%E5%85%83%E7%B4%A0"><span class="octicon octicon-link"></span></a>父容器适应浮动子容器的高 触发条件(不定高(父元素)+float(子元素))</h5>
+
+<p>两个嵌套元素，父元素的不定高，子元素浮动后出现了，父元素不会被子元素所填充 
+<strong>例：</strong>  </p>
+
+<blockquote>
+<p>.test1 {background: green;} <em>父元素</em><br>
+  .test2 {float: left;height: 300px} <em>子元素</em></p>
+</blockquote>
+
+<p><strong>解决办法：</strong><br>
+将外层元素的宽设置为偶数  </p>
+
+<h5>
+<a name="ie6%E4%BC%AA%E7%B1%BBcss%E5%A4%B1%E6%95%88-%E8%A7%A6%E5%8F%91%E6%9D%A1%E4%BB%B6%E5%AE%9A%E4%B9%89%E5%B8%A6%E6%9C%89-%E8%BF%9E%E6%8E%A5%E7%AC%A6%E7%9A%84%E4%BC%AA%E7%B1%BB%E4%BC%AA%E7%B1%BB%E5%90%8D%E7%A7%B0%E5%92%8C%E4%B9%8B%E9%97%B4%E6%B2%A1%E6%9C%89%E7%A9%BA%E6%A0%BC" class="anchor" href="#ie6%E4%BC%AA%E7%B1%BBcss%E5%A4%B1%E6%95%88-%E8%A7%A6%E5%8F%91%E6%9D%A1%E4%BB%B6%E5%AE%9A%E4%B9%89%E5%B8%A6%E6%9C%89-%E8%BF%9E%E6%8E%A5%E7%AC%A6%E7%9A%84%E4%BC%AA%E7%B1%BB%E4%BC%AA%E7%B1%BB%E5%90%8D%E7%A7%B0%E5%92%8C%E4%B9%8B%E9%97%B4%E6%B2%A1%E6%9C%89%E7%A9%BA%E6%A0%BC"><span class="octicon octicon-link"></span></a>ie6伪类css失效 触发条件(定义带有-连接符的伪类+伪类名称和{}之间没有空格)</h5>
+
+<p>定义一个伪类，伪类中包括-连接符后 所设置的css失效<br><strong>例：</strong>  </p>
+
+<blockquote>
+<p>.test:first-letter{font-size: 300%;}  </p>
+</blockquote>
+
+<p><strong>解决办法：</strong><br>
+伪类名和{}之间留1个空格</p>
+
+<h5>
+<a name="ie67%E7%A9%BA%E6%A0%87%E7%AD%BE%E7%9A%84%E6%9C%80%E5%B0%8F%E9%AB%98%E5%BA%A6bug-%E8%A7%A6%E5%8F%91%E6%9D%A1%E4%BB%B6block%E6%B2%A1%E6%9C%89%E5%AE%9A%E9%AB%98" class="anchor" href="#ie67%E7%A9%BA%E6%A0%87%E7%AD%BE%E7%9A%84%E6%9C%80%E5%B0%8F%E9%AB%98%E5%BA%A6bug-%E8%A7%A6%E5%8F%91%E6%9D%A1%E4%BB%B6block%E6%B2%A1%E6%9C%89%E5%AE%9A%E9%AB%98"><span class="octicon octicon-link"></span></a>ie6、7空标签的最小高度bug 触发条件(block+没有定高)</h5>
+
+<p>ie6、7中没有定高的块元素默认高度是13px，但是他们之间的区别是
+ie6中如果你设置的高度小于13px那么他的高度并不会是你设置的值，而是保持13px不变，然而在ie7中设置多少就是多少<br><strong>例：</strong>  </p>
+
+<blockquote>
+<p>.test {width: 100px;}  </p>
+</blockquote>
+
+<p><strong>解决办法：</strong>  </p>
+
+<blockquote>
+<p>.test {width: 100px; height:5px; overflow: hidden}</p>
+
+<h5>
+<a name="%E7%8E%B0%E4%BB%A3%E6%B5%8F%E8%A7%88%E5%99%A8%E9%9D%9Eie67-%E5%9B%BE%E7%89%87%E7%9A%84%E4%B8%8B%E9%97%B4%E8%B7%9D%E6%9C%894px-bug" class="anchor" href="#%E7%8E%B0%E4%BB%A3%E6%B5%8F%E8%A7%88%E5%99%A8%E9%9D%9Eie67-%E5%9B%BE%E7%89%87%E7%9A%84%E4%B8%8B%E9%97%B4%E8%B7%9D%E6%9C%894px-bug"><span class="octicon octicon-link"></span></a>现代浏览器非ie6、7 图片的下间距有4px bug</h5>
+
+<p>在现代浏览器中图片下方和父容器至少有4px的间距bug<br><strong>解决办法：</strong><br>
+设置图片的css img {display:block},定位方式 img{vertical-align: top}父容器定高加overflow: hidden  </p>
+
+<h5>
+<a name="ie67%E4%B8%8Bli%E4%B8%8Eli%E5%BA%95%E9%83%A8%E6%9C%892px%E9%97%B4%E8%B7%9D-bug-%E8%A7%A6%E5%8F%91%E6%9D%A1%E4%BB%B6li%E5%AE%9A%E5%AE%BDli%E5%AD%90%E5%85%83%E7%B4%A0%E6%98%AF%E6%B5%AE%E5%8A%A8" class="anchor" href="#ie67%E4%B8%8Bli%E4%B8%8Eli%E5%BA%95%E9%83%A8%E6%9C%892px%E9%97%B4%E8%B7%9D-bug-%E8%A7%A6%E5%8F%91%E6%9D%A1%E4%BB%B6li%E5%AE%9A%E5%AE%BDli%E5%AD%90%E5%85%83%E7%B4%A0%E6%98%AF%E6%B5%AE%E5%8A%A8"><span class="octicon octicon-link"></span></a>ie6、7下li与li底部有2px间距 Bug 触发条件(li定宽+li子元素是浮动)</h5>
+
+<p>在现代浏览器中当li定宽和其内部有浮动的元素的时候，出现了li与li之间有2px的下间距<br><strong>解决办法：</strong><br>
+设置li的vertical-align: middle</p>
+</blockquote>
+
+<h3>
+<a name="ie67%E7%9A%84haslayout" class="anchor" href="#ie67%E7%9A%84haslayout"><span class="octicon octicon-link"></span></a>ie6、7的hasLayout</h3>
+
+<p><strong>在表格布局的时代。几乎是所有的元素（除了内联内容）都是一个盒子。内容几乎不可能超过表格的</strong>  </p>
+
+<p>过了许多年，ie使用了trident内核去渲染html,这个内核就是使用css来进行布局,css布局改变了原来表格布局的初衷，它是通过父元素来定位子元素的，但是css允许子元素超出父元素  </p>
+
+<p>为了解决这个问题，microsoft决定用hasLayout去改善。每个元素都有hasLayout这个属性(ie8已经废除了这个属性)。</p>
+
+<p>当一个元素disabled hasLayout后，那么这个元素只能通过父元素来渲染它，这也是ie很多bug的诞生。  </p>
+
+<p>haslayout不是一个CSS属性，你不能这样的来设置(<strong>可以在js中使用element.currentStyle.hasLayout</strong>)它 haslayout:true;一个元素被设置成haslayout：true将被渲染成一个 haslayout，反之。  </p>
+
+<p><strong>一些元素本身就触发了hasLayout</strong><br><em>哪些元素本身触发了hasLayout</em>  </p>
+
+<ul>
+<li>&lt;html&gt; &lt;body&gt;&lt;div&gt;</li>
+<li>&lt;table&gt;&lt;tr&gt;&lt;th&gt;&lt;td&gt;</li>
+<li>&lt;ifram&gt;&lt;img&gt;</li>
+<li>&lt;hr&gt;</li>
+<li>&lt;input&gt;&lt;button&gt;&lt;select&gt;&lt;textarea&gt;<br>
+</li>
+</ul><p><strong>如何设置hasLayout</strong><br><em>哪些元素可以设置hasLayout=true</em></p>
+
+<ul>
+<li>position: absolute</li>
+<li>float: left || right</li>
+<li>display: inline-block</li>
+<li>width: any || auto</li>
+<li>height: any || auto</li>
+<li>zoom: 1</li>
+<li>max-width: any || auto(ie7)</li>
+<li>max-height: any || auto(ie7)</li>
+<li>min-width: any || auto(ie7)</li>
+<li>min-height: any || auto(ie7)</li>
+</ul><p><strong>bug</strong>
+多年的切图经验来看(装逼下)ie80%的bug是由于没有设置hasLayout而导致的，所以碰到了很难解释的问题，第一件事就是触发hasLayout  </p>
+
+<p><strong>怎样利用hasLayout解决bug</strong></p>
+
+<ul>
+<li>
+<strong>left定位Bug</strong><br>
+例：<br>
+&gt; div(style="position:relative;border:1px solid orange;text-align:right;")
+        a(href="<a href="http://hi.baidu.com%22">http://hi.baidu.com"</a>) <a href="http://hi.baidu.com">http://hi.baidu.com</a>
+        div(style="position:absolute;top:0;left:0;background:#CCC;") 帅哥<br>
+</li>
+</ul><p><em>分析：</em><br>
+如果position:absolute的父层，也就是position:relative的层没有设置宽或高，那么在IE6下，出现left错位的bug，其原因是没有触发haslayout。  </p>
+
+<p><em>解决方法：</em><br>
+1. 给position:relative层加上width或height；2. 给position:relative层加上zoom:1，触发layout。</p>
+
+<ul>
+<li>
+<strong>IE6/7负margin隐藏Bug：</strong><br>
+例：<br>
+&gt; div(style="float: left; width: 500px; height: 200px;border: 1px solid red;margin-left:100px")
+        span(style="margin-left: -10px") 1423432432432432432432222222222222222<br>
+</li>
+</ul><p><em>分析：</em>  当给一个有hasLayout的父元素内的非hasLayout元素设置负marin时，超出父元素部分不可见，iE6/7独有的hasLayout产生问题。 </p>
+
+<p><em>解决方法：</em><br>
+1. 赋hasLayout给子元素,并添加position:relative      </p>
+
+<h3>
+<a name="css-reset" class="anchor" href="#css-reset"><span class="octicon octicon-link"></span></a>CSS Reset</h3>
+
+<h5>
+<a name="css-reset%E6%98%AF%E4%BB%80%E4%B9%88" class="anchor" href="#css-reset%E6%98%AF%E4%BB%80%E4%B9%88"><span class="octicon octicon-link"></span></a>CSS Reset是什么?</h5>
+
+<p>html标签在浏览器有默认的样式，例如p有上下样式,strong有加粗样式,em有字体倾斜样式，不同浏览器的默认样式也有差别，例如ul带有缩进的在ie中，是通过margin而在ff中是通过padding,每个默认的样式会带来开发中的麻烦，影响开发效率，所以解决的办法是一开始将浏览器的默认样式全部去掉，更准确的是覆盖掉浏览器的默认css样式，这就是css reset  </p>
+
+<h5>
+<a name="%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E9%87%8D%E7%BD%AE%E5%AE%83" class="anchor" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E9%87%8D%E7%BD%AE%E5%AE%83"><span class="octicon octicon-link"></span></a>为什么要重置它?</h5>
+
+<p>因为浏览器很多，默认的样式又不同，影响开发效率，然后我们通过重置标签的css属性，然后在统一定义，就可以产生相同的显示的效果  </p>
+
+<h5>
+<a name="css-reset%E7%9A%84%E5%86%85%E5%AE%B9%E6%98%AF%E4%BB%80%E4%B9%88" class="anchor" href="#css-reset%E7%9A%84%E5%86%85%E5%AE%B9%E6%98%AF%E4%BB%80%E4%B9%88"><span class="octicon octicon-link"></span></a>CSS Reset的内容是什么？</h5>
+
+<p>最简单的css reset</p>
+
+<blockquote>
+<p>* { padding: 0; margin: 0; border: 0; }  </p>
+</blockquote>
+
+<p>让所有的html元素的padding,margin,border清空达到显示相同的效果</p>
+
+<blockquote>
+<p>body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,
+form,fieldset,input,textarea,p,blockquote,th,td {
+padding: 0;
+margin: 0;
+}  </p>
+
+<p>table {
+border-collapse: collapse;
+border-spacing: 0;
+}  </p>
+
+<p>fieldset,img {
+border: 0;
+}  </p>
+
+<p>address,caption,cite,code,dfn,em,strong,th,var {
+font-weight: normal;
+font-style: normal;
+}  </p>
+
+<p>ol,ul {
+list-style: none;
+}  </p>
+
+<p>caption,th {
+text-align: left;
+}  </p>
+
+<p>h1,h2,h3,h4,h5,h6 {
+font-weight: normal;
+font-size: 100%;
+}  </p>
+
+<p>q:before,q:after {
+content:'';
+}
+abbr,acronym { border: 0;
+}  </p>
+</blockquote>
+
+<p>大家可以看得出来，这些内容方法不同，但功能大同小异，都是起到重置的作用，所以说CSS Reset是根据个人需求不同可以按需自定义的。</p>
+
+<h3>
+<a name="css%E7%9A%84%E5%B1%9E%E6%80%A7%E5%92%8C%E5%8E%9F%E7%90%86" class="anchor" href="#css%E7%9A%84%E5%B1%9E%E6%80%A7%E5%92%8C%E5%8E%9F%E7%90%86"><span class="octicon octicon-link"></span></a>CSS的属性和原理</h3>
+
+<h5>
+<a name="margin-right%E5%92%8Cmargin-bottom%E7%9A%84%E5%8C%BA%E5%88%AB" class="anchor" href="#margin-right%E5%92%8Cmargin-bottom%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="octicon octicon-link"></span></a>margin-right和margin-bottom的区别</h5>
+
+<p>margin-right本意是元素的右边距离父元素的右边或者兄弟元素的左边之间的距离。<br>
+当设置值的时候，假如是与父元素相邻，那么设置margin-right就是当前元素的右边和父元素的右边的距离，控制点是当前元素。<br>
+假如是与兄弟元素相邻，那么设置margin-right是兄弟元素的左边和当前元素右边的距离，控制点在兄弟元素。  </p>
+
+<h5>
+<a name="%E8%BF%98%E6%9C%89%E5%8F%A6%E5%A4%96%E4%B8%80%E7%A7%8D%E6%83%85%E5%86%B5%E5%B0%B1%E6%98%AF%E5%BD%93%E5%85%83%E7%B4%A0%E4%B8%8D%E5%AE%9A%E5%AE%BD%E7%9A%84%E6%97%B6%E5%80%99%E5%B9%B6%E4%B8%94%E7%9B%B8%E9%82%BB%E4%BA%8E%E7%88%B6%E5%85%83%E7%B4%A0%E7%9A%84%E6%97%B6%E5%80%99" class="anchor" href="#%E8%BF%98%E6%9C%89%E5%8F%A6%E5%A4%96%E4%B8%80%E7%A7%8D%E6%83%85%E5%86%B5%E5%B0%B1%E6%98%AF%E5%BD%93%E5%85%83%E7%B4%A0%E4%B8%8D%E5%AE%9A%E5%AE%BD%E7%9A%84%E6%97%B6%E5%80%99%E5%B9%B6%E4%B8%94%E7%9B%B8%E9%82%BB%E4%BA%8E%E7%88%B6%E5%85%83%E7%B4%A0%E7%9A%84%E6%97%B6%E5%80%99"><span class="octicon octicon-link"></span></a><strong>还有另外一种情况，就是当元素不定宽的时候并且相邻于父元素的时候</strong>
+</h5>
+
+<p>当设置margin-right:正值的时候，相应的元素宽度就会减掉多少，为什么呢？<br>
+因为一个盒模型的width=margin+border+padding+width(内容)，本来一个块元素的width继承于父元素的width,当设置margin-left或者margin-righ，当前元素或多或少的向左向右移动了距离，那么当前元素就和父元素产生了距离，所以当前元素铺满的width也就减少了。  </p>
+
+<p>当设置margin-bottom的时候，父元素为不定高的情况，margin-bottom是可以控制父元素的高度的。</p>
+
+<h3>
+<a name="css%E7%9A%84%E5%8E%9F%E7%90%86%E5%8F%8A%E4%BC%98%E5%8C%96" class="anchor" href="#css%E7%9A%84%E5%8E%9F%E7%90%86%E5%8F%8A%E4%BC%98%E5%8C%96"><span class="octicon octicon-link"></span></a>CSS的原理及优化</h3>
+
+<p>在写css代码的时候，做些简单的优化，可以提升渲染的性能  </p>
+
+<h3>
+<a name="%E6%B5%8F%E8%A7%88%E5%99%A8%E6%98%AF%E5%A6%82%E4%BD%95%E6%B8%B2%E6%9F%93%E9%A1%B5%E9%9D%A2%E5%92%8C%E5%8A%A0%E8%BD%BD%E9%A1%B5%E9%9D%A2%E7%9A%84" class="anchor" href="#%E6%B5%8F%E8%A7%88%E5%99%A8%E6%98%AF%E5%A6%82%E4%BD%95%E6%B8%B2%E6%9F%93%E9%A1%B5%E9%9D%A2%E5%92%8C%E5%8A%A0%E8%BD%BD%E9%A1%B5%E9%9D%A2%E7%9A%84"><span class="octicon octicon-link"></span></a>浏览器是如何渲染页面和加载页面的？</h3>
+
+<p>我们有些时候打开网页加载会很慢，而且是整个页面同时显示，而有些页面是从上到下依次显示<br>
+1、 浏览器下载的顺序从上到下，渲染的顺序是从上到下，下载和渲染是并行执行的<br>
+2、 如果遇到语义解释性的标签嵌入文件(js脚本、css文件)，会并行的下载，那么在下载后进行解析，解析的过程是阻塞下面元素的渲染，解析完成后对所有以前加载好的元素进行渲染<br>
+3、<strong>渲染效率与下面三点有关</strong><br>
+    (一)、css选择器的查询定位效率<br>
+    (二)、浏览器的渲染模式和算法<br>
+    (三)、进行渲染的大小  </p>
+
+<h5>
+<a name="%E4%BD%BF%E7%94%A8css%E5%B8%83%E5%B1%80%E6%AF%94table%E6%9C%89%E5%93%AA%E4%BA%9B%E4%BC%98%E5%8A%BF" class="anchor" href="#%E4%BD%BF%E7%94%A8css%E5%B8%83%E5%B1%80%E6%AF%94table%E6%9C%89%E5%93%AA%E4%BA%9B%E4%BC%98%E5%8A%BF"><span class="octicon octicon-link"></span></a>使用css布局比table有哪些优势</h5>
+
+<pre><code>1、表现和内容相分离，将用于展现的剥离出一个文件，html只放内容，有利于搜索引擎。
+2、使用css布局比使用table布局代码量少将近1半，避免浏览器渲染大量冗长的标签。
+3、易于维护，改版后只需要修改文件就可以重新定义页面的样式。
+</code></pre>
+
+<h5>
+<a name="%E6%B5%8F%E8%A7%88%E5%99%A8%E5%AF%B9css" class="anchor" href="#%E6%B5%8F%E8%A7%88%E5%99%A8%E5%AF%B9css"><span class="octicon octicon-link"></span></a>浏览器对css</h5>
+
+<pre><code>1、css匹配是从右到左匹配，比如DIV#divBox p span.red{color:red;} 浏览器的查找顺序如下，先查找html中所有class="red"的span元素，找到后，查找父元素是否有p元素，在判断p元素是否有id=divBox的div元素，如果都存在则css匹配成功  
+2、浏览器从右到左进行查找的好处是为了尽早过滤掉一些无关的样式规则和元素。firefox称这种查 找方式为keyselector(关键字查询)，所谓的关键字就是样式规则中最后(最右边)的规则，上面的key就是span.red。  
+</code></pre>
+
+<h3>
+<a name="%E4%BC%98%E5%8C%96%E4%BD%A0%E7%9A%84css" class="anchor" href="#%E4%BC%98%E5%8C%96%E4%BD%A0%E7%9A%84css"><span class="octicon octicon-link"></span></a>优化你的css</h3>
+
+<ul>
+<li>css 命名 、书写规范；（好的代码看上去就很整齐 很有条理性这样方便日后的维护和管理）<br>
+</li>
+<li>css优先级； 选择器权重：内联样式：1000，id选择器：1000， class选择器：10，标签选择器：1  注意权重的问题。<br>
+</li>
+<li>少用滤镜，少用hack，少用position：absolute；。<br>
+</li>
+<li>多用继承属性。<br>
+</li>
+<li>使用简写样式：例如margin: 10px; 浏览器会解释为上下左右各有10px的外补丁。margin： 0 10px 浏览器解析为 左右有10px的外补丁。<br>
+</li>
+<li>不要在ID选择器和class选择器前 使用标签名 例如：div.box { color: #f00; }; 直接 可以 用类名， .box { color:#f00;}  这样浏览器找到这个class后 就不用再匹配是否存在div标签.从而提高了渲染效率。当然同一级的 有不同的样式可以这样写，但是不建议这样。<br>
+</li>
+<li>css的层级关系不要太深 用class直接代替多余的层级元素。例如 .box .box-con .box-list li { line-height: 24px; } 这么长。。。增加代码量减小开发效率。刚也说了，css渲染是从上到下，从右到左的
+所以直接这样写就可以了.box-list li { line-height: 24px; };<br>
+</li>
+<li>平铺背景图片不要过小，影响渲染速率。<br>
+</li>
+<li>float使用要谨慎。<br>
+</li>
+<li>合理化布局（模块化布局）；可以把样式划分为 基类 和扩展类 ;模块化布局 ：模块基本相同的样式写在 基类里，不同的在重新用class来定义称为扩展类 。<br>
+</li>
+<li>在css渲染效率中id和class的效率是基本相当的</li>
+</ul><p>class最在第一次载入中被缓存，在层叠中会有更加好的效果，在根部元素采用id会具有更加好（id有微妙的速度优势）。
+在css渲染效率中id和class的效率是基本相当的</p>
+
+<p>class最在第一次载入中被缓存，在层叠中会有更加好的效果，在根部元素采用id会具有更加好（id有微妙的速度优势）。</p>
+      </section>
+      <footer>
+        <p>Project maintained by <a href="https://github.com/Hussion">Hussion</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://twitter.com/michigangraham">mattgraham</a></small></p>
+      </footer>
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+    
+  </body>
+</html>
